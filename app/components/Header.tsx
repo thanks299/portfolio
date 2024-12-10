@@ -45,7 +45,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-10">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <h1 className="text-xl font-bold">Your Name</h1>
+        <h1 className="text-xl font-bold">Agbeble Thanks</h1>
         <nav>
           <ul className="flex space-x-4">
             {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (

@@ -13,14 +13,14 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
-    const darkMode = localStorage.getItem('darkMode') === 'true';
-    setIsDarkMode(darkMode);
+    const darkMode = localStorage.getItem('darkMode') === 'true'
+    setIsDarkMode(darkMode)
     if (darkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add('dark')
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove('dark')
     }
-  }, []);
+  }, [])
 
   const handleNavClick = (section: string) => {
     setActiveSection(section)
@@ -28,32 +28,32 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsMenuOpen(false); // Close menu after click on mobile
+    setIsMenuOpen(false) // Close menu after clicking
   }
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      localStorage.setItem('darkMode', newMode.toString());
+      const newMode = !prevMode
+      localStorage.setItem('darkMode', newMode.toString())
       if (newMode) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('dark')
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove('dark')
       }
-      return newMode;
-    });
-  };
+      return newMode
+    })
+  }
 
   const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
+    setIsMenuOpen((prev) => !prev)
+  }
 
   return (
-    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-10">
+    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold">Agbeble Thanks</h1>
-        <button 
-          onClick={toggleMenu} 
+        <button
+          onClick={toggleMenu}
           className="lg:hidden text-gray-600 dark:text-gray-300"
           aria-label="Toggle navigation menu"
         >
@@ -61,26 +61,51 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         </button>
         <nav
           className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } lg:flex lg:items-center lg:space-x-4 absolute lg:static top-full left-0 w-full lg:w-auto bg-white dark:bg-gray-800 lg:bg-transparent`}
+            isMenuOpen ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30' : 'hidden'
+          } lg:flex lg:items-center lg:space-x-4`}
         >
-          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
+          <ul className="space-y-6 lg:space-y-0 lg:flex lg:space-x-4 text-center">
             {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
               <li key={section}>
                 <button
                   onClick={() => handleNavClick(section)}
-                  className={`capitalize ${
-                    activeSection === section ? 'text-blue-600 dark:text-blue-400' : ''
+                  className={`capitalize text-2xl lg:text-base ${
+                    activeSection === section ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300'
                   }`}
-                  aria-current={activeSection === section ? 'page' : undefined}
                 >
                   {section.replace('-', ' ')}
                 </button>
               </li>
             ))}
+            <li className="flex flex-col items-center space-y-4">
+              <a
+                href="https://github.com/your-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/your-linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://instagram.com/your-instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                Instagram
+              </a>
+            </li>
             <li>
-              <button onClick={toggleDarkMode} aria-label="Toggle dark mode">
-                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <button onClick={toggleDarkMode} aria-label="Toggle dark mode" className="mt-4 lg:mt-0">
+                {isDarkMode ? <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" /> : <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
               </button>
             </li>
           </ul>

@@ -14,7 +14,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
             <Image
               src="/thanks.jpg"
               alt="thanks"
-              layout="fill"
+              layout="responsive"
               objectFit="cover"
               className="rounded-full"
             />

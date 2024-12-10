@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Moon, Sun } from 'lucide-react'
+import { Moon, Sun, Menu, X } from 'lucide-react'
 
 interface HeaderProps {
   activeSection: string
@@ -10,6 +10,7 @@ interface HeaderProps {
 
 export default function Header({ activeSection, setActiveSection }: HeaderProps) {
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const darkMode = localStorage.getItem('darkMode') === 'true';
@@ -27,6 +28,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+    setIsMenuOpen(false); // Close menu after click on mobile
   }
 
   const toggleDarkMode = () => {
@@ -42,12 +44,27 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     });
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-10">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold">Agbeble Thanks</h1>
-        <nav>
-          <ul className="flex space-x-4">
+        <button 
+          onClick={toggleMenu} 
+          className="lg:hidden text-gray-600 dark:text-gray-300"
+          aria-label="Toggle navigation menu"
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+        <nav
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } lg:flex lg:items-center lg:space-x-4 absolute lg:static top-full left-0 w-full lg:w-auto bg-white dark:bg-gray-800 lg:bg-transparent`}
+        >
+          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
             {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
               <li key={section}>
                 <button
@@ -55,6 +72,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                   className={`capitalize ${
                     activeSection === section ? 'text-blue-600 dark:text-blue-400' : ''
                   }`}
+                  aria-current={activeSection === section ? 'page' : undefined}
                 >
                   {section.replace('-', ' ')}
                 </button>
@@ -71,4 +89,3 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     </header>
   )
 }
-

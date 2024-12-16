@@ -52,6 +52,18 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20 py-6">
       <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center space-x-4">
+          <img
+            src="/path-to-your-logo.png" // Replace with your logo path
+            alt="Logo"
+            className="h-10" // Adjust logo size as needed
+          />
+          <span className="text-2xl font-bold text-gray-800 dark:text-white">
+            Your Website Name
+          </span>
+        </div>
+
         {/* Desktop Navigation Menu */}
         <nav className="lg:flex lg:items-center lg:space-x-4 hidden">
           <ul className="flex space-x-6">
@@ -70,7 +82,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               </li>
             ))}
             <li className="flex space-x-4">
-              {/* Social Media Links with Icons, aligned horizontally */}
+              {/* Social Media Links with Icons */}
               <a
                 href="https://github.com/your-github"
                 target="_blank"
@@ -102,7 +114,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         {/* Mobile Menu Button (Hamburger / X) */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden text-gray-600 dark:text-gray-300 p-2" // Added padding to make button more clickable
+          className="lg:hidden text-gray-600 dark:text-gray-300 p-2"
           aria-label="Toggle navigation menu"
         >
           {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
@@ -117,19 +129,15 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
             : 'hidden'
         } lg:hidden`}
       >
-        {/* Dark Mode Toggle inside the mobile menu */}
+        {/* Close Header Button (X button) */}
         <button
-          onClick={toggleDarkMode}
-          aria-label="Toggle dark mode"
-          className="mb-6"
+          onClick={toggleMenu}
+          aria-label="Close navigation menu"
+          className="absolute top-4 right-4 text-white bg-gray-800 p-2 rounded-full"
         >
-          {isDarkMode ? (
-            <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-          ) : (
-            <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-          )}
+          <X className="h-6 w-6" />
         </button>
-        
+
         <ul className="space-y-6 text-center">
           {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
             <li key={section}>
@@ -161,7 +169,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
-              <FaLinkedin size={24} />
+                <FaLinkedin size={24} />
             </a>
             <a
               href="https://instagram.com/your-instagram"
@@ -173,6 +181,19 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
             </a>
           </li>
         </ul>
+
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+          className="mt-6 text-white bg-gray-800 p-2 rounded-full"
+        >
+          {isDarkMode ? (
+            <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          ) : (
+            <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          )}
+        </button>
       </nav>
     </header>
   )

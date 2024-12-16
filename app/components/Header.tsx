@@ -107,15 +107,6 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               <button onClick={toggleDarkMode} aria-label="Toggle dark mode" className="mt-4 lg:mt-0">
                 {isDarkMode ? <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" /> : <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
               </button>
-
-
-<button
-  onClick={closeHeader}
-  className="text-gray-600 dark:text-gray-300"
-  aria-label="Close header"
->
-  <X className="h-6 w-6" />
-</button>
             </li>
           </ul>
         </nav>

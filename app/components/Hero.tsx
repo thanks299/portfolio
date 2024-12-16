@@ -21,8 +21,8 @@ export default function Hero({ setActiveSection }: HeroProps) {
           </div>
         </div>
         <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I'm Your Name</h1>
-          <p className="text-xl md:text-2xl mb-8">I'm a Full Stack Developer</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I'm Agbeble Thanks</h1>
+          <p className="text-xl md:text-2xl mb-8">I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences.</p>
           <button
             onClick={() => {
               setActiveSection('projects')

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa' // Import the social media icons
 
 interface HeaderProps {
   activeSection: string
@@ -56,7 +57,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold">Agbeble Thanks</h1>
-        
+
         {/* Menu Button - Only visible on mobile */}
         <button
           onClick={toggleMenu}
@@ -89,30 +90,31 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                 </button>
               </li>
             ))}
-            <li className="flex flex-col items-center space-y-4">
+            <li className="flex space-x-6">
+              {/* Social Media Links with Icons, aligned horizontally */}
               <a
                 href="https://github.com/your-github"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                GitHub
+                <FaGithub size={24} />
               </a>
               <a
                 href="https://linkedin.com/in/your-linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                LinkedIn
+                <FaLinkedin size={24} />
               </a>
               <a
                 href="https://instagram.com/your-instagram"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                Instagram
+                <FaInstagram size={24} />
               </a>
             </li>
             <li>

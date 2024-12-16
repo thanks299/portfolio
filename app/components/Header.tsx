@@ -50,16 +50,16 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   }
 
   return (
-    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20 py-6">
+    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20 py-3"> {/* Reduced vertical padding */}
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3"> {/* Reduced space between logo and text */}
           <img
             src="/path-to-your-logo.png" // Replace with your logo path
             alt="Logo"
-            className="h-10" // Adjust logo size as needed
+            className="h-8" // Reduced logo size
           />
-          <span className="text-2xl font-bold text-gray-800 dark:text-white">
+          <span className="text-lg font-bold text-gray-800 dark:text-white"> {/* Reduced font size */}
             Your Website Name
           </span>
         </div>
@@ -71,7 +71,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               <li key={section}>
                 <button
                   onClick={() => handleNavClick(section)}
-                  className={`capitalize text-xl ${
+                  className={`capitalize text-lg ${ // Reduced text size
                     activeSection === section
                       ? 'text-blue-600 dark:text-blue-400'
                       : 'text-gray-600 dark:text-gray-300'
@@ -89,7 +89,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                <FaGithub size={24} />
+                <FaGithub size={22} />
               </a>
               <a
                 href="https://linkedin.com/in/your-linkedin"
@@ -97,7 +97,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                <FaLinkedin size={24} />
+                <FaLinkedin size={22} />
               </a>
               <a
                 href="https://instagram.com/your-instagram"
@@ -105,7 +105,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
-                <FaInstagram size={24} />
+                <FaInstagram size={22} />
               </a>
             </li>
           </ul>

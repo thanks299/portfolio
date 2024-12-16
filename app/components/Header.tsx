@@ -11,7 +11,6 @@ interface HeaderProps {
 export default function Header({ activeSection, setActiveSection }: HeaderProps) {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true) // New state for header visibility
 
   useEffect(() => {
     const darkMode = localStorage.getItem('darkMode') === 'true'
@@ -49,32 +48,17 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     setIsMenuOpen((prev) => !prev)
   }
 
-  const closeHeader = () => {
-    setIsHeaderVisible(false) // Hide the header
-  }
-
-  if (!isHeaderVisible) return null // Don't render the header if it's not visible
-
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold">Agbeble Thanks</h1>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleMenu}
-            className="lg:hidden text-gray-600 dark:text-gray-300"
-            aria-label="Toggle navigation menu"
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-          <button
-            onClick={closeHeader}
-            className="text-gray-600 dark:text-gray-300"
-            aria-label="Close header"
-          >
-            <X className="h-6 w-6" />
-          </button>
-        </div>
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden text-gray-600 dark:text-gray-300"
+          aria-label="Toggle navigation menu"
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
         <nav
           className={`${
             isMenuOpen ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30' : 'hidden'
@@ -123,6 +107,15 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               <button onClick={toggleDarkMode} aria-label="Toggle dark mode" className="mt-4 lg:mt-0">
                 {isDarkMode ? <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" /> : <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
               </button>
+
+
+<button
+  onClick={closeHeader}
+  className="text-gray-600 dark:text-gray-300"
+  aria-label="Close header"
+>
+  <X className="h-6 w-6" />
+</button>
             </li>
           </ul>
         </nav>

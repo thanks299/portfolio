@@ -1,19 +1,22 @@
-'use client'
+'use client' 
+
 
 import { useState } from 'react'
 
 export default function Header({
   activeSection,
   setActiveSection,
-  toggleTheme,
-  isDarkMode
 }: {
   activeSection: string
   setActiveSection: (section: string) => void
-  toggleTheme: () => void
-  isDarkMode: boolean
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+    document.documentElement.classList.toggle('dark')
+  }
 
   return (
     <header className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-md sticky top-0 z-50">
@@ -74,15 +77,44 @@ export default function Header({
           </a>
         </nav>
 
-        {/* Theme Toggle Button */}
-        <button
-          className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none"
-          onClick={toggleTheme}
-        >
-          {isDarkMode ? '🌙' : '☀️'}
-        </button>
+        {/* Theme Toggle and Social Media Links */}
+        <div className="flex items-center space-x-4">
+          {/* Social Media Links */}
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+          >
+            Twitter
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
+          >
+            LinkedIn
+          </a>
 
-        {/* Mobile Burger Menu Button */}
+          {/* Dark Mode Toggle */}
+          <button
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none"
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? '🌙' : '☀️'}
+          </button>
+        </div>
+
+        {/* Mobile Burger Menu */}
         <button
           className="block md:hidden text-2xl focus:outline-none"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -98,9 +130,6 @@ export default function Header({
             <li>
               <a
                 href="#hero"
-                className={`hover:underline ${
-                  activeSection === 'home' ? 'underline' : ''
-                }`}
                 onClick={() => {
                   setActiveSection('home')
                   setIsMenuOpen(false)
@@ -112,9 +141,6 @@ export default function Header({
             <li>
               <a
                 href="#projects"
-                className={`hover:underline ${
-                  activeSection === 'projects' ? 'underline' : ''
-                }`}
                 onClick={() => {
                   setActiveSection('projects')
                   setIsMenuOpen(false)
@@ -126,9 +152,6 @@ export default function Header({
             <li>
               <a
                 href="#tech-stack"
-                className={`hover:underline ${
-                  activeSection === 'tech-stack' ? 'underline' : ''
-                }`}
                 onClick={() => {
                   setActiveSection('tech-stack')
                   setIsMenuOpen(false)
@@ -140,9 +163,6 @@ export default function Header({
             <li>
               <a
                 href="#about"
-                className={`hover:underline ${
-                  activeSection === 'about' ? 'underline' : ''
-                }`}
                 onClick={() => {
                   setActiveSection('about')
                   setIsMenuOpen(false)
@@ -154,9 +174,6 @@ export default function Header({
             <li>
               <a
                 href="#contact"
-                className={`hover:underline ${
-                  activeSection === 'contact' ? 'underline' : ''
-                }`}
                 onClick={() => {
                   setActiveSection('contact')
                   setIsMenuOpen(false)

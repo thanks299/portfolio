@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa' // Import the social media icons
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa' 
 
 interface HeaderProps {
   activeSection: string

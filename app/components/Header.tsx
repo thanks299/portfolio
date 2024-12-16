@@ -1,215 +1,142 @@
-'use client' 
+'use client'
 
+import { useState, useEffect } from 'react'
+import { Moon, Sun, Menu, X } from 'lucide-react'
 
-import { useState } from 'react'
-
-export default function Header({
-  activeSection,
-  setActiveSection,
-}: {
+interface HeaderProps {
   activeSection: string
   setActiveSection: (section: string) => void
-}) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+}
+
+export default function Header({ activeSection, setActiveSection }: HeaderProps) {
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const darkMode = localStorage.getItem('darkMode') === 'true'
+    setIsDarkMode(darkMode)
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
+
+  const handleNavClick = (section: string) => {
+    setActiveSection(section)
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMenuOpen(false) // Close menu after clicking
+  }
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-    document.documentElement.classList.toggle('dark')
+    setIsDarkMode((prevMode) => {
+      const newMode = !prevMode
+      localStorage.setItem('darkMode', newMode.toString())
+      if (newMode) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+      return newMode
+    })
+  }
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev)
+  }
+
+  const closeHeader = () => {
+    setIsMenuOpen(false)
   }
 
   return (
-    <header className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
-        {/* Brand Logo */}
-        <div className="text-lg font-bold">
-          <a href="#hero" onClick={() => setActiveSection('home')}>
-            My Portfolio
-          </a>
-        </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
-          <a
-            href="#hero"
-            className={`hover:underline ${
-              activeSection === 'home' ? 'underline' : ''
-            }`}
-            onClick={() => setActiveSection('home')}
-          >
-            Home
-          </a>
-          <a
-            href="#projects"
-            className={`hover:underline ${
-              activeSection === 'projects' ? 'underline' : ''
-            }`}
-            onClick={() => setActiveSection('projects')}
-          >
-            Projects
-          </a>
-          <a
-            href="#tech-stack"
-            className={`hover:underline ${
-              activeSection === 'tech-stack' ? 'underline' : ''
-            }`}
-            onClick={() => setActiveSection('tech-stack')}
-          >
-            Tech Stack
-          </a>
-          <a
-            href="#about"
-            className={`hover:underline ${
-              activeSection === 'about' ? 'underline' : ''
-            }`}
-            onClick={() => setActiveSection('about')}
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            className={`hover:underline ${
-              activeSection === 'contact' ? 'underline' : ''
-            }`}
-            onClick={() => setActiveSection('contact')}
-          >
-            Contact
-          </a>
-        </nav>
-
-        {/* Theme Toggle and Social Media Links */}
-        <div className="flex items-center space-x-4">
-          {/* Dark Mode Toggle */}
-          <button
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none"
-            onClick={toggleDarkMode}
-          >
-            {isDarkMode ? '🌙' : '☀️'}
-          </button>
-
-          {/* Social Media Icons (Desktop) */}
-          <div className="hidden md:flex space-x-4">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              <img src="/path/to/twitter-icon.svg" alt="Twitter" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-            >
-              <img src="/path/to/github-icon.svg" alt="GitHub" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
-            >
-              <img src="/path/to/linkedin-icon.svg" alt="LinkedIn" className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
-
-        {/* Mobile Burger Menu */}
+    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+        <h1 className="text-xl font-bold">Agbeble Thanks</h1>
+        {/* Mobile burger menu button */}
         <button
-          className="block md:hidden text-2xl focus:outline-none"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={toggleMenu}
+          className="lg:hidden text-gray-600 dark:text-gray-300"
+          aria-label="Toggle navigation menu"
         >
-          {isMenuOpen ? '✖' : '☰'}
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
+        <nav
+          className={`${
+            isMenuOpen
+              ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30'
+              : 'hidden'
+          } lg:flex lg:items-center lg:space-x-4`}
+        >
+          <ul className="space-y-6 lg:space-y-0 lg:flex lg:space-x-4 text-center">
+            {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
+              <li key={section}>
+                <button
+                  onClick={() => handleNavClick(section)}
+                  className={`capitalize text-2xl lg:text-base ${
+                    activeSection === section
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-600 dark:text-gray-300'
+                  }`}
+                >
+                  {section.replace('-', ' ')}
+                </button>
+              </li>
+            ))}
+            <li className="flex flex-col items-center space-y-4">
+              <a
+                href="https://github.com/your-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/your-linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://instagram.com/your-instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl lg:text-base text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <button
+                onClick={toggleDarkMode}
+                aria-label="Toggle dark mode"
+                className="mt-4 lg:mt-0"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                ) : (
+                  <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                )}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={closeHeader}
+                className="text-gray-600 dark:text-gray-300"
+                aria-label="Close header"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gray-200 dark:bg-gray-800 p-6 flex flex-col items-center">
-          <nav className="space-y-6">
-            <a
-              href="#hero"
-              className="text-xl hover:underline"
-              onClick={() => {
-                setActiveSection('home')
-                setIsMenuOpen(false)
-              }}
-            >
-              Home
-            </a>
-            <a
-              href="#projects"
-              className="text-xl hover:underline"
-              onClick={() => {
-                setActiveSection('projects')
-                setIsMenuOpen(false)
-              }}
-            >
-              Projects
-            </a>
-            <a
-              href="#tech-stack"
-              className="text-xl hover:underline"
-              onClick={() => {
-                setActiveSection('tech-stack')
-                setIsMenuOpen(false)
-              }}
-            >
-              Tech Stack
-            </a>
-            <a
-              href="#about"
-              className="text-xl hover:underline"
-              onClick={() => {
-                setActiveSection('about')
-                setIsMenuOpen(false)
-              }}
-            >
-              About
-            </a>
-            <a
-              href="#contact"
-              className="text-xl hover:underline"
-              onClick={() => {
-                setActiveSection('contact')
-                setIsMenuOpen(false)
-              }}
-            >
-              Contact
-            </a>
-          </nav>
-
-          {/* Social Media Icons (Mobile) */}
-          <div className="mt-8 flex space-x-4">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            >
-              <img src="/path/to/twitter-icon.svg" alt="Twitter" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-            >
-              <img src="/path/to/github-icon.svg" alt="GitHub" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
-            >
-              <img src="/path/to/linkedin-icon.svg" alt="LinkedIn" className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   )
 }

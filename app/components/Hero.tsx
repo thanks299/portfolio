@@ -1,5 +1,3 @@
-'use client' 
-
 import Image from 'next/image';
 import { ArrowDown } from 'lucide-react';
 
@@ -10,8 +8,9 @@ interface HeroProps {
 export default function Hero({ setActiveSection }: HeroProps) {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 mb-8 md:mb-0">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row-reverse items-center gap-8">
+        {/* Image Section */}
+        <div className="md:w-1/2">
           <div className="relative w-64 h-64 mx-auto md:w-full md:max-w-md">
             <Image
               src="/thanks.jpg"
@@ -19,12 +18,16 @@ export default function Hero({ setActiveSection }: HeroProps) {
               layout="responsive"
               width={500} // Adjust to match image's aspect ratio
               height={500} // Adjust to match image's aspect ratio
-              className="rounded-full"
+              className="rounded-full shadow-lg"
             />
           </div>
         </div>
+
+        {/* Text Section */}
         <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I'm Agbeble Thanks</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Hi, I'm Agbeble Thanks
+          </h1>
           <p className="text-xl md:text-2xl mb-8">
             I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. 
             I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences.

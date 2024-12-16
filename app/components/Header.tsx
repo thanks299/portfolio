@@ -50,12 +50,10 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   }
 
   return (
-    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+    <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20 py-6">
+      <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Desktop Navigation Menu - Only visible on desktop */}
-        <nav
-          className="lg:flex lg:items-center lg:space-x-4 hidden"
-        >
+        <nav className="lg:flex lg:items-center lg:space-x-4 hidden">
           <ul className="flex space-x-6">
             {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
               <li key={section}>
@@ -101,26 +99,13 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
           </ul>
         </nav>
 
-        {/* Dark Mode Toggle - Centered */}
-        <button
-          onClick={toggleDarkMode}
-          aria-label="Toggle dark mode"
-          className="absolute left-1/2 transform -translate-x-1/2"
-        >
-          {isDarkMode ? (
-            <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-          ) : (
-            <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-          )}
-        </button>
-
         {/* Menu Button - Only visible on mobile (Far right) */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden text-gray-600 dark:text-gray-300 absolute right-6"
+          className="lg:hidden text-gray-600 dark:text-gray-300"
           aria-label="Toggle navigation menu"
         >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
         </button>
       </div>
 
@@ -128,10 +113,23 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
       <nav
         className={`${
           isMenuOpen
-            ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30'
+            ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30 p-6'
             : 'hidden'
         } lg:hidden`}
       >
+        {/* Dark Mode Toggle inside the mobile menu */}
+        <button
+          onClick={toggleDarkMode}
+          aria-label="Toggle dark mode"
+          className="mb-6"
+        >
+          {isDarkMode ? (
+            <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          ) : (
+            <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+          )}
+        </button>
+        
         <ul className="space-y-6 text-center">
           {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
             <li key={section}>
@@ -163,7 +161,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
-              <FaLinkedin size={24} />
+                <FaLinkedin size={24} />
             </a>
             <a
               href="https://instagram.com/your-instagram"

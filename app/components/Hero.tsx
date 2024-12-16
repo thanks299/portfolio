@@ -17,7 +17,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
         <div className="w-full flex justify-center mb-8">
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
             <Image
-              src="/thanks.jpg"
+              src="/thanks"
               alt="Hero Image"
               layout="responsive"
               width={500}

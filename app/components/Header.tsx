@@ -52,7 +52,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20 py-6">
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Desktop Navigation Menu - Only visible on desktop */}
+        {/* Desktop Navigation Menu */}
         <nav className="lg:flex lg:items-center lg:space-x-4 hidden">
           <ul className="flex space-x-6">
             {['home', 'projects', 'tech-stack', 'about', 'contact'].map((section) => (
@@ -99,17 +99,17 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
           </ul>
         </nav>
 
-        {/* Menu Button - Only visible on mobile (Far right) */}
+        {/* Mobile Menu Button (Hamburger / X) */}
         <button
           onClick={toggleMenu}
-          className="lg:hidden text-gray-600 dark:text-gray-300"
+          className="lg:hidden text-gray-600 dark:text-gray-300 p-2" // Added padding to make button more clickable
           aria-label="Toggle navigation menu"
         >
           {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
         </button>
       </div>
 
-      {/* Mobile Navigation Menu - Visible when the menu is open */}
+      {/* Mobile Navigation Menu */}
       <nav
         className={`${
           isMenuOpen
@@ -161,7 +161,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
-                <FaLinkedin size={24} />
+              <FaLinkedin size={24} />
             </a>
             <a
               href="https://instagram.com/your-instagram"

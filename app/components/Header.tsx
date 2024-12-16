@@ -49,7 +49,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   }
 
   const closeHeader = () => {
-    // Implement your logic to close the header
+    setIsMenuOpen(false)
   }
 
   return (
@@ -65,7 +65,9 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         </button>
         <nav
           className={`${
-            isMenuOpen ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30' : 'hidden'
+            isMenuOpen
+              ? 'fixed inset-0 bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center z-30'
+              : 'hidden'
           } lg:flex lg:items-center lg:space-x-4`}
         >
           <ul className="space-y-6 lg:space-y-0 lg:flex lg:space-x-4 text-center">
@@ -74,7 +76,9 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
                 <button
                   onClick={() => handleNavClick(section)}
                   className={`capitalize text-2xl lg:text-base ${
-                    activeSection === section ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-300'
+                    activeSection === section
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-600 dark:text-gray-300'
                   }`}
                 >
                   {section.replace('-', ' ')}
@@ -108,8 +112,16 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
               </a>
             </li>
             <li>
-              <button onClick={toggleDarkMode} aria-label="Toggle dark mode" className="mt-4 lg:mt-0">
-                {isDarkMode ? <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" /> : <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+              <button
+                onClick={toggleDarkMode}
+                aria-label="Toggle dark mode"
+                className="mt-4 lg:mt-0"
+              >
+                {isDarkMode ? (
+                  <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                ) : (
+                  <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />
+                )}
               </button>
             </li>
             <li>

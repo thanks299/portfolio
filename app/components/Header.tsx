@@ -48,6 +48,10 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     setIsMenuOpen((prev) => !prev)
   }
 
+  const closeHeader = () => {
+    // Implement your logic to close the header
+  }
+
   return (
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -106,6 +110,15 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
             <li>
               <button onClick={toggleDarkMode} aria-label="Toggle dark mode" className="mt-4 lg:mt-0">
                 {isDarkMode ? <Sun className="h-6 w-6 text-gray-600 dark:text-gray-300" /> : <Moon className="h-6 w-6 text-gray-600 dark:text-gray-300" />}
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={closeHeader}
+                className="text-gray-600 dark:text-gray-300"
+                aria-label="Close header"
+              >
+                <X className="h-6 w-6" />
               </button>
             </li>
           </ul>

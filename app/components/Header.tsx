@@ -56,7 +56,8 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
     <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-20">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <h1 className="text-xl font-bold">Agbeble Thanks</h1>
-        {/* Mobile burger menu button */}
+        
+        {/* Menu Button - Only visible on mobile */}
         <button
           onClick={toggleMenu}
           className="lg:hidden text-gray-600 dark:text-gray-300"
@@ -64,6 +65,8 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
+
+        {/* Navigation Menu - Always visible on desktop, only visible on mobile if the menu is open */}
         <nav
           className={`${
             isMenuOpen

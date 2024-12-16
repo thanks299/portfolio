@@ -55,7 +55,7 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         <button
           onClick={toggleMenu}
           className="lg:hidden text-gray-600 dark:text-gray-300"
-          aria-label="Toggle navigation menu"
+          aria-label={isMenuOpen ? 'Close header' : 'Toggle navigation menu'}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>

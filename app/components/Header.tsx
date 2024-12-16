@@ -79,32 +79,6 @@ export default function Header({
 
         {/* Theme Toggle and Social Media Links */}
         <div className="flex items-center space-x-4">
-          {/* Social Media Links */}
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-          >
-            Twitter
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
-          >
-            LinkedIn
-          </a>
-
           {/* Dark Mode Toggle */}
           <button
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none"
@@ -112,6 +86,34 @@ export default function Header({
           >
             {isDarkMode ? '🌙' : '☀️'}
           </button>
+
+          {/* Social Media Icons (Desktop) */}
+          <div className="hidden md:flex space-x-4">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+            >
+              <img src="/path/to/twitter-icon.svg" alt="Twitter" className="w-6 h-6" />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            >
+              <img src="/path/to/github-icon.svg" alt="GitHub" className="w-6 h-6" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
+            >
+              <img src="/path/to/linkedin-icon.svg" alt="LinkedIn" className="w-6 h-6" />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Burger Menu */}
@@ -125,65 +127,88 @@ export default function Header({
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-gray-200 dark:bg-gray-800">
-          <ul className="space-y-4 p-4">
-            <li>
-              <a
-                href="#hero"
-                onClick={() => {
-                  setActiveSection('home')
-                  setIsMenuOpen(false)
-                }}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                onClick={() => {
-                  setActiveSection('projects')
-                  setIsMenuOpen(false)
-                }}
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#tech-stack"
-                onClick={() => {
-                  setActiveSection('tech-stack')
-                  setIsMenuOpen(false)
-                }}
-              >
-                Tech Stack
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                onClick={() => {
-                  setActiveSection('about')
-                  setIsMenuOpen(false)
-                }}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                onClick={() => {
-                  setActiveSection('contact')
-                  setIsMenuOpen(false)
-                }}
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-gray-200 dark:bg-gray-800 p-6 flex flex-col items-center">
+          <nav className="space-y-6">
+            <a
+              href="#hero"
+              className="text-xl hover:underline"
+              onClick={() => {
+                setActiveSection('home')
+                setIsMenuOpen(false)
+              }}
+            >
+              Home
+            </a>
+            <a
+              href="#projects"
+              className="text-xl hover:underline"
+              onClick={() => {
+                setActiveSection('projects')
+                setIsMenuOpen(false)
+              }}
+            >
+              Projects
+            </a>
+            <a
+              href="#tech-stack"
+              className="text-xl hover:underline"
+              onClick={() => {
+                setActiveSection('tech-stack')
+                setIsMenuOpen(false)
+              }}
+            >
+              Tech Stack
+            </a>
+            <a
+              href="#about"
+              className="text-xl hover:underline"
+              onClick={() => {
+                setActiveSection('about')
+                setIsMenuOpen(false)
+              }}
+            >
+              About
+            </a>
+            <a
+              href="#contact"
+              className="text-xl hover:underline"
+              onClick={() => {
+                setActiveSection('contact')
+                setIsMenuOpen(false)
+              }}
+            >
+              Contact
+            </a>
+          </nav>
+
+          {/* Social Media Icons (Mobile) */}
+          <div className="mt-8 flex space-x-4">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+            >
+              <img src="/path/to/twitter-icon.svg" alt="Twitter" className="w-6 h-6" />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            >
+              <img src="/path/to/github-icon.svg" alt="GitHub" className="w-6 h-6" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-500"
+            >
+              <img src="/path/to/linkedin-icon.svg" alt="LinkedIn" className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
       )}
     </header>
   )

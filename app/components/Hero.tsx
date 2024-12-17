@@ -70,7 +70,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
           </div>
         </div>
         <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I'm Agbeble Thanks</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Hi, I'm <br />Agbeble Thanks</h1>
           <p className="text-xl md:text-2xl mb-8">
             {displayedText}
             {showCursor && <span className="cursor">|</span>}

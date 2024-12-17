@@ -6,17 +6,20 @@ interface TechItem {
 }
 
 const techStack: TechItem[] = [
-  { name: 'Python', image: '/python.jpeg' },
+  { name: 'Python', image: '/python.png' },
   { name: 'React', image: '/react.jpeg' },
-  { name: 'Next.js', image: '/next.jpeg' },
+  { name: 'Next.js', image: '/next js.jpeg' },
   { name: 'Node.js', image: '/node.jpeg' },
   { name: 'JavaScript', image: '/javascript-log.jpeg' },
   { name: 'MongoDB', image: '/mongodb.jpeg' },
   { name: 'Git', image: '/git.jpeg' },
-  { name: 'TypeScript', image: '/typescript.jpeg' },
-  { name: 'Sass', image: '/sass-logo.svg' },
+  { name: 'TypeScript', image: '/typescript.png' },
+  { name: 'Sass', image: '/sass.png' },
   { name: 'Express.js', image: '/express.jpeg' },
   { name: 'flutter', image: '/f.jpeg' },
+  { name: 'MySql', image: '/mysql.jpeg' },
+  { name: 'HTML5', image: '/html-5.png' },
+  { name: 'PHP', image: '/php.png' },
 ]
 
 export default function TechStack() {

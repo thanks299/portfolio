@@ -644,6 +644,9 @@ video {
 .max-w-md {
   max-width: 28rem;
 }
+.grow {
+  flex-grow: 1;
+}
 @keyframes bounce {
 
   0%, 100% {

@@ -55,12 +55,12 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
         {/* Logo */}
         <div className="flex items-center space-x-3"> {/* Reduced space between logo and text */}
           <img
-            src="/path-to-your-logo.png" // Replace with your logo path
+            src="/.png" // Replace with your logo path
             alt="Logo"
             className="h-8" // Reduced logo size
           />
           <span className="text-lg font-bold text-gray-800 dark:text-white"> {/* Reduced font size */}
-            Your Website Name
+            Thanks portfolio
           </span>
         </div>
 

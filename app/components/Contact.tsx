@@ -81,7 +81,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 mr-2 text-blue-600" />
                 <span>Phone:</span>
                 <a
-                  href="tel:+234 08134490997"
+                  href="tel:+2348134490997"
                   className="ml-2 text-blue-600 hover:underline"
                 >
                   Place a call

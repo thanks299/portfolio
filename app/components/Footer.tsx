@@ -9,10 +9,10 @@ export default function Footer() {
             <p>&copy; {new Date().getFullYear()} Agbeble Thanks. All rights reserved.</p>
           </div>
           <div className="flex space-x-4">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+            <a href="https://github.com/thanks299" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
               <Github className="h-6 w-6" />
             </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+            <a href="https://linkedin.com/in/iamthanks" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
               <Linkedin className="h-6 w-6" />
             </a>
             <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">

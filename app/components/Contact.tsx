@@ -59,7 +59,7 @@ export default function Contact() {
                 <MessageCircle className="w-6 h-6 mr-2 text-blue-600" />
                 <span>WhatsApp:</span>
                 <a
-                  href="https://wa.me/1234567890"
+                  href="https://wa.me/+234 08134490997"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-2 text-blue-600 hover:underline"
@@ -71,7 +71,7 @@ export default function Contact() {
                 <Mail className="w-6 h-6 mr-2 text-blue-600" />
                 <span>Email:</span>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:thanksagbeble@gmail.com"
                   className="ml-2 text-blue-600 hover:underline"
                 >
                   Send a mail
@@ -81,7 +81,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 mr-2 text-blue-600" />
                 <span>Phone:</span>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+234 08134490997"
                   className="ml-2 text-blue-600 hover:underline"
                 >
                   Place a call

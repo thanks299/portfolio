@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Send, Phone, Mail, MessageCircle, FileDown } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -56,29 +55,25 @@ export default function Contact() {
             <h3 className="text-2xl font-semibold mb-4">Contact Details</h3>
             <div className="space-y-4">
               <div className="flex items-center">
-                <MessageCircle className="w-6 h-6 mr-2 text-blue-600" />
-                <span>WhatsApp:</span>
+                <img
+                  src="/whatsaap.gif"
+                  alt="whats app Icon"
+                  className="w-6 h-6 mr-2"
+                />
+                <span>Whatsapp:</span>
                 <a
-                  href="https://wa.me/+234 08134490997"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+2348134490997"
                   className="ml-2 text-blue-600 hover:underline"
                 >
                   Send a message
                 </a>
               </div>
               <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-2 text-blue-600" />
-                <span>Email:</span>
-                <a
-                  href="mailto:thanksagbeble@gmail.com"
-                  className="ml-2 text-blue-600 hover:underline"
-                >
-                  Send a mail
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-2 text-blue-600" />
+                <img
+                  src="/phone call ggif.gif"
+                  alt="Phone Icon"
+                  className="w-6 h-6 mr-2"
+                />
                 <span>Phone:</span>
                 <a
                   href="tel:+2348134490997"
@@ -88,15 +83,36 @@ export default function Contact() {
                 </a>
               </div>
               <div className="flex items-center">
-                <FileDown className="w-6 h-6 mr-2 text-blue-600" />
-                <span>CV:</span>
+                <img
+                  src="/emailgif.gif"
+                  alt="Email Icon"
+                  className="w-6 h-6 mr-2"
+                />
+                <span>Email:</span>
                 <a
-                  href="/your-name-cv.pdf"
-                  download
+                  href="mailto:thanksagbeble@gmail.com"
                   className="ml-2 text-blue-600 hover:underline"
                 >
-                  Download CV
+                  Send a mail
                 </a>
+              </div>
+              <div className="flex items-center">
+                <img
+                  src="/location gif.gif"
+                  alt="Location Icon"
+                  className="w-6 h-6 mr-2"
+                />
+                <span>Location:</span>
+                <span className="ml-2">Abuja, Nigeria</span>
+              </div>
+              {/* Download CV Button */}
+              <div className="flex items-center">
+                <button
+                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+                  onClick={() => window.open('/thanks_Resume[1].pdf', '_blank')}
+                >
+                  Download My CV
+                </button>
               </div>
             </div>
           </div>
@@ -150,7 +166,6 @@ export default function Contact() {
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 flex items-center justify-center"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
-                <Send className="ml-2 h-5 w-5" />
               </button>
               {submitStatus === 'success' && (
                 <p className="mt-4 text-green-600 dark:text-green-400 text-center">Message sent successfully!</p>

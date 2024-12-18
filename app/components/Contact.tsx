@@ -62,7 +62,7 @@ export default function Contact() {
                 />
                 <span>Whatsapp:</span>
                 <a
-                  href="https://wa.me/+234 08134490997"
+                  href="https://wa.me/+2348134490997"
                   className="ml-2 text-blue-600 hover:underline"
                 >
                   Send a message

@@ -82,13 +82,3 @@ export default function Portfolio() {
   )
 }
 
-' in "return (
-    <section
-      ref={ref}
-      className={`transition-opacity duration-1000 ${
-        isIntersecting ? 'opacity-100' : 'opacity-0'
-      } ${className}`}
-    >
-      {children}
-    </section>
-  )

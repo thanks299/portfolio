@@ -64,20 +64,20 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-      <main className="pt-16"> {/* Fixed padding for the header */}
-        <AnimatedSection className="px-8"> {/* Removed responsive classes */}
+      <main className="pt-16 md:pt-20 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32"> {/* Responsive paddings for different screen sizes */}
+        <AnimatedSection className="mb-12">
           <Hero setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-8">
+        <AnimatedSection className="mb-12">
           <Projects setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-8">
+        <AnimatedSection className="mb-12">
           <TechStack />
         </AnimatedSection>
-        <AnimatedSection className="px-8">
+        <AnimatedSection className="mb-12">
           <About setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-8">
+        <AnimatedSection className="mb-12">
           <Contact />
         </AnimatedSection>
       </main>

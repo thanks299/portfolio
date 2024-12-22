@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, ReactNode } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
@@ -13,34 +13,29 @@ import ScrollArrow from './components/ScrollArrow'
 // Custom hook for intersection observer
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false)
-  const elementRef = useRef<HTMLElement | null>(null)
+  const ref = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setIsIntersecting(entry.isIntersecting)
     }, options)
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current)
+    if (ref.current) {
+      observer.observe(ref.current)
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current)
+      if (ref.current) {
+        observer.unobserve(ref.current)
       }
     }
-  }, [elementRef, options])
+  }, [ref, options])
 
-  return [elementRef, isIntersecting] as const
+  return [ref, isIntersecting]
 }
 
 // Animated section component
-interface AnimatedSectionProps {
-  children: ReactNode
-  className?: string
-}
-
-function AnimatedSection({ children, className = '' }: AnimatedSectionProps) {
+function AnimatedSection({ children, className = '' }) {
   const [ref, isIntersecting] = useIntersectionObserver({
     threshold: 0.1,
     triggerOnce: true
@@ -64,20 +59,20 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-      <main className="pt-16 md:pt-20"> {/* Add top padding to account for fixed header */}
-        <AnimatedSection className="px-4 md:px-8 lg:px-16">
+      <main>
+        <AnimatedSection>
           <Hero setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-4 md:px-8 lg:px-16">
+        <AnimatedSection>
           <Projects setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-4 md:px-8 lg:px-16">
+        <AnimatedSection>
           <TechStack />
         </AnimatedSection>
-        <AnimatedSection className="px-4 md:px-8 lg:px-16">
+        <AnimatedSection>
           <About setActiveSection={setActiveSection} />
         </AnimatedSection>
-        <AnimatedSection className="px-4 md:px-8 lg:px-16">
+        <AnimatedSection>
           <Contact />
         </AnimatedSection>
       </main>
@@ -87,3 +82,13 @@ export default function Portfolio() {
   )
 }
 
+' in "return (
+    <section
+      ref={ref}
+      className={`transition-opacity duration-1000 ${
+        isIntersecting ? 'opacity-100' : 'opacity-0'
+      } ${className}`}
+    >
+      {children}
+    </section>
+  )

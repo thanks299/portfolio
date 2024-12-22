@@ -1,50 +1,52 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
+import { Send } from 'lucide-react';
+import emailjs from '@emailjs/browser'; // Install this package with `npm install @emailjs/browser`
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus(null)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        'service_8ckpg5u', 
+        'template_if4zncc', // Replace with your EmailJS Template ID
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
         },
-        body: JSON.stringify(formData),
-      })
+        'nq0KDLApA5IZVhmzq' // Replace with your EmailJS Public Key
+      );
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', message: '' })
-      } else {
-        setSubmitStatus('error')
-      }
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      setSubmitStatus('error')
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800 animate-slide-in">
@@ -52,6 +54,7 @@ export default function Contact() {
         <h2 className="text-3xl font-bold mb-8 text-center animate-slide-in">Contact Me</h2>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
+            {/* Contact Details */}
             <h3 className="text-2xl font-semibold mb-4">Contact Details</h3>
             <div className="space-y-4">
               <div className="flex items-center">
@@ -166,6 +169,7 @@ export default function Contact() {
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 flex items-center justify-center"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Send className="ml-2 h-5 w-5" />
               </button>
               {submitStatus === 'success' && (
                 <p className="mt-4 text-green-600 dark:text-green-400 text-center">Message sent successfully!</p>
@@ -178,6 +182,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 

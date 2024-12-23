@@ -32,7 +32,7 @@ export default function About({ setActiveSection }: AboutProps) {
     { year: '2021', event: 'Completed first major full-stack project' },
     { year: '2020', event: 'Started learning web development' },
   ]
-  
+
   const interests = [
     { icon: <Code className="w-5 h-5 md:w-6 md:h-6" />, text: 'Coding' },
     { icon: <Book className="w-5 h-5 md:w-6 md:h-6" />, text: 'Reading' },
@@ -48,15 +48,15 @@ export default function About({ setActiveSection }: AboutProps) {
 
   return (
     <section id="about" className="py-12 md:py-20 bg-gray-50 dark:bg-gray-800 animate-slide-in">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">About Me</h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">About Me</h2>
         <div className="max-w-4xl mx-auto">
           <div className="mb-6 md:mb-8 flex flex-wrap justify-center gap-2 md:gap-4">
             {['bio', 'skills', 'experience', 'interests'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-3 py-1 md:px-4 md:py-2 text-sm md:text-base rounded-full ${
+                className={`px-3 py-1 md:px-4 md:py-2 text-xs sm:text-sm md:text-base rounded-full ${
                   activeTab === tab
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
@@ -68,17 +68,17 @@ export default function About({ setActiveSection }: AboutProps) {
           </div>
 
           {activeTab === 'bio' && (
-            <div className="space-y-4 md:space-y-6 animate-slide-in">
-              <p className="text-sm md:text-lg">
+            <div className="space-y-4 md:space-y-6 animate-slide-in text-sm sm:text-base md:text-lg">
+              <p>
                 I graduated with a Bachelor's degree in Computer Science from the National Open University of Nigeria, establishing a strong foundation in computer science concepts and software engineering principles. In 2024, I achieved three certifications from Alx Africa: Software Engineering, Artificial Intelligence Career Essentials (AICE), and Virtual Assistance.
               </p>
-              <p className="text-sm md:text-lg">
+              <p>
                 Currently, I'm pursuing a Master's degree in Cybersecurity at Miva Open University, fueled by my passion for this critical field. I'm constantly seeking ways to enhance my skills in cybersecurity and stay at the forefront of this rapidly evolving domain.
               </p>
-              <p className="text-sm md:text-lg">
+              <p>
                 My experience spans various programming languages, frameworks, and tools, including Python, JavaScript, React, Node.js, and MongoDB. I've worked on diverse projects involving web development and mobile app development, always striving to create beautiful, functional, and user-friendly solutions.
               </p>
-              <p className="text-sm md:text-lg">
+              <p>
                 When I'm not immersed in code or studying, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good book on software design patterns. I'm always eager to learn and improve my skills to stay current with the latest trends in the tech industry.
               </p>
             </div>
@@ -89,8 +89,8 @@ export default function About({ setActiveSection }: AboutProps) {
               {skills.map((skill) => (
                 <div key={skill.name} className="mb-2 md:mb-4">
                   <div className="flex justify-between mb-1">
-                    <span className="text-sm md:text-base font-medium text-blue-700 dark:text-blue-300">{skill.name}</span>
-                    <span className="text-xs md:text-sm font-medium text-blue-700 dark:text-blue-300">{skill.level}%</span>
+                    <span className="text-xs sm:text-sm md:text-base font-medium text-blue-700 dark:text-blue-300">{skill.name}</span>
+                    <span className="text-xs sm:text-sm md:text-base font-medium text-blue-700 dark:text-blue-300">{skill.level}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2 md:h-2.5 dark:bg-gray-700">
                     <div 
@@ -108,19 +108,19 @@ export default function About({ setActiveSection }: AboutProps) {
               {experiences.map((exp, index) => (
                 <div key={index} className="mb-6 md:mb-10 ml-2 md:ml-4">
                   <div className="absolute w-2 md:w-3 h-2 md:h-3 bg-gray-200 rounded-full mt-1.5 -left-1 md:-left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                  <time className="mb-1 text-xs md:text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{exp.year}</time>
-                  <h3 className="text-sm md:text-lg font-semibold text-gray-900 dark:text-white">{exp.event}</h3>
+                  <time className="mb-1 text-xs sm:text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{exp.year}</time>
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 dark:text-white">{exp.event}</h3>
                 </div>
               ))}
             </div>
           )}
 
           {activeTab === 'interests' && (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 animate-slide-in">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 animate-slide-in">
               {interests.map((interest, index) => (
                 <div key={index} className="flex items-center space-x-2 bg-white dark:bg-gray-700 p-3 md:p-4 rounded-lg shadow-md">
                   {interest.icon}
-                  <span className="text-sm md:text-lg">{interest.text}</span>
+                  <span className="text-xs sm:text-sm md:text-base">{interest.text}</span>
                 </div>
               ))}
             </div>
@@ -132,7 +132,7 @@ export default function About({ setActiveSection }: AboutProps) {
                 setActiveSection('contact')
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 text-sm md:text-base rounded-full transition duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 text-xs sm:text-sm md:text-base rounded-full transition duration-300"
             >
               Get in Touch
             </button>

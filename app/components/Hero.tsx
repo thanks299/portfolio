@@ -17,25 +17,23 @@ export default function Hero({ setActiveSection }: HeroProps) {
     let currentTextIndex = 0;
     let typingInterval: NodeJS.Timeout;
     let cursorBlink: NodeJS.Timeout;
+    let resetTimeout: NodeJS.Timeout;
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        setDisplayedText((prev) => {
-          if (currentTextIndex < fullText.length) {
-            currentTextIndex++;
-            return fullText.slice(0, currentTextIndex);
-          }
+        if (currentTextIndex < fullText.length) {
+          setDisplayedText((prev) => prev + fullText[currentTextIndex]);
+          currentTextIndex++;
+        } else {
           clearInterval(typingInterval);
-          setTimeout(resetTyping, resetInterval);
-          return prev;
-        });
+          resetTimeout = setTimeout(resetTyping, resetInterval);
+        }
       }, typingSpeed);
     };
 
     const resetTyping = () => {
       setDisplayedText('');
       currentTextIndex = 0;
-      setShowCursor(true);
       startTyping();
     };
 
@@ -45,6 +43,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
     return () => {
       clearInterval(typingInterval);
       clearInterval(cursorBlink);
+      clearTimeout(resetTimeout);
     };
   }, [fullText, typingSpeed, resetInterval]);
 

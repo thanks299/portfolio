@@ -28,7 +28,7 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        'service_8ckpg5u', 
+        'service_8ckpg5u',
         'template_if4zncc', // Replace with your EmailJS Template ID
         {
           from_name: formData.name,
@@ -52,6 +52,20 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800 animate-slide-in">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center animate-slide-in">Contact Me</h2>
+        
+        {/* Map Section */}
+        <div className="aspect-w-16 aspect-h-9 mb-8">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126083.42285880761!2d7.324718582455139!3d9.054396995694854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e745f4cd62fd9%3A0x53bd17b4a20ea12b!2sAbuja%2C%20Federal%20Capital%20Territory%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1685201234567!5m2!1sen!2sus"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             {/* Contact Details */}
@@ -119,6 +133,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
+
           <div className="md:w-1/2">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>

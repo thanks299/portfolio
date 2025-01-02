@@ -9,7 +9,7 @@ interface HeroProps {
 export default function Hero({ setActiveSection }: HeroProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  
+
   const fullText = `I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!`;
   const typingSpeed = 50;
   const resetInterval = 60000; // 1 minute
@@ -26,7 +26,8 @@ export default function Hero({ setActiveSection }: HeroProps) {
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {
-          clearInterval(typingInterval);
+          clearInterval(typingInterval); // Stop typing when done
+          setShowCursor(false); // Stop blinking cursor when text is complete
           resetTimeout = setTimeout(resetTyping, resetInterval);
         }
       }, typingSpeed);
@@ -35,6 +36,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
     const resetTyping = () => {
       setDisplayedText('');
       textIndex = 0;
+      setShowCursor(true); // Ensure cursor is visible on reset
       startTyping();
     };
 
@@ -77,7 +79,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
             Hi, I'm <br />
             Agbeble Thanks
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 h-24 sm:h-20 md:h-24 lg:h-28 overflow-hidden">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 overflow-visible">
             {displayedText}
             {showCursor && <span className="cursor">|</span>}
           </p>
@@ -97,4 +99,3 @@ export default function Hero({ setActiveSection }: HeroProps) {
     </section>
   );
 }
-

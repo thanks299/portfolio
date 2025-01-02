@@ -22,13 +22,15 @@ export default function Hero({ setActiveSection }: HeroProps) {
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        if (textIndex < fullText.length) {
+        if (textIndex <= fullText.length - 1) {
+          // If within bounds, add character
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {
-          clearInterval(typingInterval); // Stop typing when done
-          setShowCursor(false); // Stop blinking cursor when text is complete
-          resetTimeout = setTimeout(resetTyping, resetInterval);
+          // If out of bounds, stop typing and handle the end state
+          clearInterval(typingInterval);
+          setShowCursor(false); // Stop the blinking cursor
+          resetTimeout = setTimeout(resetTyping, resetInterval); // Reset after interval
         }
       }, typingSpeed);
     };
@@ -36,7 +38,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
     const resetTyping = () => {
       setDisplayedText('');
       textIndex = 0;
-      setShowCursor(true); // Ensure cursor is visible on reset
+      setShowCursor(true); // Show cursor at the start of reset
       startTyping();
     };
 
@@ -60,7 +62,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
       aria-label="Hero section"
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center">
-        {/* Image Section: Visible only on desktop */}
+        {/* Image Section */}
         <div className="hidden md:block md:w-1/2">
           <div className="relative w-48 h-48 mx-auto md:w-80 md:h-80 lg:w-96 lg:h-96">
             <Image

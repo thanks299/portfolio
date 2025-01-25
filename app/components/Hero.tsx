@@ -23,11 +23,9 @@ export default function Hero({ setActiveSection }: HeroProps) {
     const startTyping = () => {
       typingInterval = setInterval(() => {
         if (textIndex < fullText.length) {
-          // If within bounds, add character
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {
-          // If out of bounds, stop typing and handle the end state
           clearInterval(typingInterval);
           setShowCursor(false); // Stop the blinking cursor
           resetTimeout = setTimeout(resetTyping, resetInterval); // Reset after interval
@@ -71,6 +69,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
               layout="fill"
               objectFit="cover"
               className="rounded-full"
+              priority // Ensures the image is prioritized for loading
             />
           </div>
         </div>
@@ -83,7 +82,11 @@ export default function Hero({ setActiveSection }: HeroProps) {
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 overflow-visible">
             {displayedText}
-            {showCursor && <span className="cursor">|</span>}
+            {showCursor && (
+              <span className="cursor" aria-hidden="true">
+                |
+              </span>
+            )}
           </p>
           <button
             onClick={() => {

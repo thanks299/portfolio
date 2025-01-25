@@ -22,7 +22,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        if (textIndex <= setInterval) {
+        if (textIndex, <= setInterval) {
           // If within bounds, add character
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;

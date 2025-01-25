@@ -9,7 +9,9 @@ export default function Projects({ setActiveSection }: ProjectsProps) {
     { id: 1, title: 'Project 1', description: 'Description of Project 1', image: '/placeholder.svg' },
     { id: 2, title: 'Project 2', description: 'Description of Project 2', image: '/placeholder.svg' },
     { id: 3, title: 'Project 3', description: 'Description of Project 3', image: '/placeholder.svg' },
-    { id: 4, title: 'Project 4', description: 'Description of Project 3', image: '/placeholder.svg' },
+    { id: 4, title: 'Project 4', description: 'Description of Project 4', image: '/placeholder.svg' },
+    { id: 5, title: 'Project 5', description: 'Description of Project 5', image: '/placeholder.svg' },
+    { id: 6, title: 'Project 6', description: 'Description of Project 6', image: '/placeholder.svg' },
   ]
 
   return (

@@ -77,8 +77,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
         {/* Text Section */}
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-            Hi, I'm <br />
-            Agbeble Thanks
+            Hi, I'm Agbeble Thanks
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 overflow-visible">
             {displayedText}

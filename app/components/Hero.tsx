@@ -26,7 +26,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {
-          clearInterval(typingInterval);
+          clearInterval(typingInterval); // Clear the interval before appending undefined
           setShowCursor(false); // Stop the blinking cursor
           resetTimeout = setTimeout(resetTyping, resetInterval); // Reset after interval
         }

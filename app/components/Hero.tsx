@@ -11,7 +11,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
   const [showCursor, setShowCursor] = useState(true);
 
   const fullText = "I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!"\n;
-  const typingSpeed = 50;
+  const typingSpeed = 100;
   const resetInterval = 60000; // 1 minute
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        if (textIndex < fullText.length) {
+        if (textIndex <= fullText.length) {
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {

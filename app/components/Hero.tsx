@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowDown } from 'lucide-react';
 
@@ -10,33 +10,34 @@ export default function Hero({ setActiveSection }: HeroProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
 
-  const fullText = "I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!";
+  const fullText =
+    "I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!";
   const typingSpeed = 100;
   const resetInterval = 60000; // 1 minute
+  const textIndexRef = useRef(0);
 
   useEffect(() => {
     let typingInterval: NodeJS.Timeout;
     let cursorBlinkInterval: NodeJS.Timeout;
     let resetTimeout: NodeJS.Timeout;
-    let textIndex = 0;
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        if (textIndex < fullText.length) {
-          setDisplayedText((prev) => prev + fullText[textIndex]);
-          textIndex++;
+        if (textIndexRef.current < fullText.length) {
+          setDisplayedText((prev) => prev + fullText[textIndexRef.current]);
+          textIndexRef.current++;
         } else {
-          clearInterval(typingInterval); // Clear the interval before appending undefined
-          setShowCursor(false); // Stop the blinking cursor
-          resetTimeout = setTimeout(resetTyping, resetInterval); // Reset after interval
+          clearInterval(typingInterval);
+          setShowCursor(false);
+          resetTimeout = setTimeout(resetTyping, resetInterval);
         }
       }, typingSpeed);
     };
 
     const resetTyping = () => {
       setDisplayedText('');
-      textIndex = 0;
-      setShowCursor(true); // Show cursor at the start of reset
+      textIndexRef.current = 0;
+      setShowCursor(true);
       startTyping();
     };
 
@@ -69,7 +70,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
               layout="fill"
               objectFit="cover"
               className="rounded-full"
-              priority // Ensures the image is prioritized for loading
+              priority
             />
           </div>
         </div>

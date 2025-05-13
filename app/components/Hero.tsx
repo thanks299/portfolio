@@ -22,7 +22,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
 
     const startTyping = () => {
       typingInterval = setInterval(() => {
-        if (textIndex <= fullText.length) {
+        if (textIndex < fullText.length) {
           setDisplayedText((prev) => prev + fullText[textIndex]);
           textIndex++;
         } else {

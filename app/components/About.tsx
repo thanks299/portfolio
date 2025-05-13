@@ -73,7 +73,7 @@ export default function About({ setActiveSection }: AboutProps) {
                 I graduated with a Bachelor's degree in Computer Science from the National Open University of Nigeria, establishing a strong foundation in computer science concepts and software engineering principles. In 2024, I achieved three certifications from Alx Africa: Software Engineering, Artificial Intelligence Career Essentials (AICE), and Virtual Assistance.
               </p>
               <p>
-                Currently, I'm pursuing a Master's degree in Cybersecurity at Miva Open University, fueled by my passion for this critical field. I'm constantly seeking ways to enhance my skills in cybersecurity and stay at the forefront of this rapidly evolving domain.
+                Currently, I'm pursuing a Master's degree in Information Technology at National Open University of Nigeria, fueled by my passion for this critical field. I'm constantly seeking ways to enhance my skills, ensuring I remain at the forefront of this rapidly evolving domain.
               </p>
               <p>
                 My experience spans various programming languages, frameworks, and tools, including Python, JavaScript, React, Node.js, and MongoDB. I've worked on diverse projects involving web development and mobile app development, always striving to create beautiful, functional, and user-friendly solutions.

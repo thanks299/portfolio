@@ -10,7 +10,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
 
-  const fullText = "I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!\n";
+  const fullText = "I'm a Full Stack Developer skilled in building beautiful and functional user interfaces. I enjoy working on projects that utilize both front-end and back-end technologies to create seamless user experiences. Let's build something amazing together!"\n;
   const typingSpeed = 50;
   const resetInterval = 60000; // 1 minute
 

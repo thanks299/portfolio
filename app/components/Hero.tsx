@@ -17,19 +17,19 @@ export default function Hero({ setActiveSection }: HeroProps) {
   const textIndexRef = useRef(0);
 
   useEffect(() => {
-    let typingInterval: NodeJS.Timeout;
-    let cursorBlinkInterval: NodeJS.Timeout;
-    let resetTimeout: NodeJS.Timeout;
+    let typingInterval: number;
+    let cursorBlinkInterval: number;
+    let resetTimeout: number;
 
     const startTyping = () => {
-      typingInterval = setInterval(() => {
+      typingInterval = window.setInterval(() => {
         if (textIndexRef.current < fullText.length) {
           setDisplayedText((prev) => prev + fullText[textIndexRef.current]);
           textIndexRef.current++;
         } else {
           clearInterval(typingInterval);
           setShowCursor(false);
-          resetTimeout = setTimeout(resetTyping, resetInterval);
+          resetTimeout = window.setTimeout(resetTyping, resetInterval);
         }
       }, typingSpeed);
     };
@@ -41,7 +41,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
       startTyping();
     };
 
-    cursorBlinkInterval = setInterval(() => {
+    cursorBlinkInterval = window.setInterval(() => {
       setShowCursor((prev) => !prev);
     }, 500);
 
@@ -52,7 +52,7 @@ export default function Hero({ setActiveSection }: HeroProps) {
       clearInterval(cursorBlinkInterval);
       clearTimeout(resetTimeout);
     };
-  }, [fullText, typingSpeed, resetInterval]);
+  }, []);
 
   return (
     <section
@@ -62,8 +62,8 @@ export default function Hero({ setActiveSection }: HeroProps) {
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Image Section */}
-        <div className="hidden md:block md:w-1/2">
-          <div className="relative w-48 h-48 mx-auto md:w-80 md:h-80 lg:w-96 lg:h-96">
+        <div className="w-full md:w-1/2 mb-8 md:mb-0 flex justify-center">
+          <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-80 md:h-80 lg:w-96 lg:h-96">
             <Image
               src="/thanks.jpeg"
               alt="Profile picture of Agbeble Thanks"

@@ -15,7 +15,7 @@ export default function Footer() {
             <a href="https://linkedin.com/in/iamthanks" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
               <Linkedin className="h-6 w-6" />
             </a>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+            <a href="https://x.com/heisthanks" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
               <Twitter className="h-6 w-6" />
             </a>
           </div>

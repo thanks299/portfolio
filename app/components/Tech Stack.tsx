@@ -9,8 +9,8 @@ const techStack: TechItem[] = [
   { name: 'Python', image: '/python.png' },
   { name: 'React', image: '/react.jpeg' },
   { name: 'Next.js', image: '/next js.jpeg' },
-  { name: 'Node.js', image: '/node.jpeg' },
-  { name: 'JavaScript', image: '/javascript-log.jpeg' },
+  { name: 'Node.js', image: '/nodejs.jpg' },
+  { name: 'JavaScript', image: '/javascript1.jpg' },
   { name: 'MongoDB', image: '/mongodb.jpeg' },
   { name: 'Git', image: '/git.jpeg' },
   { name: 'TypeScript', image: '/typescript.png' },
@@ -18,7 +18,7 @@ const techStack: TechItem[] = [
   { name: 'Express.js', image: '/express.jpeg' },
   { name: 'flutter', image: '/f.jpeg' },
   { name: 'MySql', image: '/mysql.jpeg' },
-  { name: 'HTML5', image: '/html-5.png' },
+  { name: 'HTML5', image: '/html5.jpg' },
   { name: 'PHP', image: '/php.png' },
 ]
 
